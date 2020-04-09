@@ -67,6 +67,7 @@ def generic_bfs_edges(G, source, neighbors=None, depth_limit=None):
         try:
             child = next(children)
             if child not in visited:
+                print("Sto esaminando il nodo " + str(parent) + " e sto accodando il figlio " + str(child))  
                 yield parent, child
                 visited.add(child)
                 if depth_now > 1:
@@ -145,7 +146,7 @@ def bfs_edges(G, source, reverse=False, depth_limit=None):
     if reverse and G.is_directed():
         successors = G.predecessors
     else:
-        successors = G.neighbors
+        successors = G.neighbors 
     yield from generic_bfs_edges(G, source, successors, depth_limit)
 
 
